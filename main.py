@@ -58,7 +58,6 @@ def get_predicted_value(patient_symptoms):
 
 # creating routes========================================
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
