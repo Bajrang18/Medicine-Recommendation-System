@@ -3,35 +3,80 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Developer Team - Medicine Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #f7f9fc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .team-card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 30px;
+        margin-top: 50px;
+        text-align: center;
+      }
+      .team-img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #1d3557;
+        margin-bottom: 15px;
+      }
+      .btn-primary {
+        background-color: #1d3557;
+        border: none;
+      }
+      .btn-primary:hover {
+        background-color: #457b9d;
+      }
+    </style>
   </head>
   <body>
 
-  <div class="container my-4 mt-4">
-<h6>    About Junaid Khan: Your AI & ML Engineer
-</h6>
-<h5>Meet the Developer</h5>
+    <div class="container">
+      <div class="team-card mx-auto">
+        <h2 class="fw-bold text-primary mb-4">Our Developer Team</h2>
 
-<p>Hello, I'm Junaid Khan, your AI and Machine Learning Engineer with over 5 years of experience in the field. I am passionate about harnessing the power of technology to make a positive impact on people's lives. Allow me to share a bit about my journey in the world of artificial intelligence and machine learning.
-</p>
-<h5>My Expertise
-</h5>
-<p>With a strong academic background in computer science and a deep fascination for AI and ML, I embarked on a journey that has taken me across the globe, working on diverse and innovative projects. Over the years, I've had the privilege of collaborating on international projects that have pushed the boundaries of what's possible in AI and ML.
-</p>
-<h5>A Commitment to Excellence
-</h5>
-<p>My work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.
-</p>
-<h5>Passion for Health Tech
-</h5>
-<p>The development of [Your Website Name] represents a convergence of my passion for AI and my dedication to improving healthcare accessibility. I believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.
-</p>
-<h5>Join Me on this Journey
-</h5>
-<p>I invite you to explore [Your Website Name] and experience firsthand the fusion of AI and healthcare. Together, we can empower individuals with knowledge, promote well-being, and contribute to a brighter and healthier future.
-</p>
-  </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <div class="row g-4 justify-content-center">
+
+          <!-- Bajrang Kumar -->
+          <div class="col-md-4">
+            <img src="{{ url_for('static', filename='bajrang.jpg') }}" alt="Bajrang Kumar" class="team-img">
+            <h5 class="fw-bold">Bajrang Kumar</h5>
+            <p class="text-muted">Team Leader & Backend Developer</p>
+            <p>Specialized in Flask, Machine Learning, and System Design. Passionate about building intelligent healthcare applications.</p>
+          </div>
+
+          <!-- Ahana Mandal -->
+          <div class="col-md-4">
+            <img src="{{ url_for('static', filename='ahana.jpg') }}" alt="Ahana Mandal" class="team-img">
+            <h5 class="fw-bold">Ahana Mandal</h5>
+            <p class="text-muted">Frontend Developer</p>
+            <p>Focused on user interface design, responsiveness, and creating a seamless user experience for the Medicine Recommendation System.</p>
+          </div>
+
+          <!-- Sonu Kumar Ranjan -->
+          <div class="col-md-4">
+            <img src="{{ url_for('static', filename='sonu.jpg') }}" alt="Sonu Kumar Ranjan" class="team-img">
+            <h5 class="fw-bold">Sonu Kumar Ranjan</h5>
+            <p class="text-muted">Data Analyst</p>
+            <p>Responsible for data collection, preprocessing, and analyzing healthcare datasets to power accurate disease predictions.</p>
+          </div>
+
+        </div>
+
+        <a href="/" class="btn btn-primary mt-4">Back to Home</a>
+      </div>
+    </div>
+
+    <footer class="text-center mt-5 mb-3 text-muted">
+      <p>&copy; 2025 Medicine Recommendation System | Developed by Bajrang Kumar, Ahana Mandal & Sonu Kumar Ranjan</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

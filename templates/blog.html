@@ -1,47 +1,90 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Post</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container my-4 mt-4">
+    <title>How It Works - Medicine Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-        <h2 class="text-center"> Building a Symptom-Based Disease Diagnosis Web App with Flask and Machine Learning</h2>
-        <p>In the age of technology and information, access to accurate and timely healthcare is more critical than ever. With the increasing importance of remote healthcare solutions, we embarked on a journey to develop a symptom-based disease diagnosis web application. Leveraging Flask for the backend and a Decision Tree Classifier model, we created a user-friendly platform that can help users identify potential illnesses based on their reported symptoms.</p>
+        .container {
+            margin-top: 50px;
+        }
 
-        <h3>The Problem</h3>
-        <p>The project began with recognizing a common issue: people often experience symptoms and want quick answers about their health concerns. It can be challenging to differentiate between various diseases, especially when symptoms overlap. Our goal was to provide a convenient solution for users to input their symptoms and receive potential diagnoses.</p>
+        h1, h3 {
+            color: #1d3557;
+        }
 
-        <h3>The Solution</h3>
-        <p>We developed a web app that allows users to enter a list of symptoms they are experiencing. The app then uses a pre-trained Decision Tree Classifier model to predict the most likely disease based on the provided symptoms. Here's how it works:</p>
+        .step-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-        <ol>
-            <li><b><strong>Symptom Input:</strong></b> Users enter their symptoms through a user-friendly interface. The web app supports a wide range of symptoms, making it versatile for different scenarios.</li>
-            <li><b><strong>Machine Learning Model:</strong></b> We trained a Decision Tree Classifier using a dataset containing symptoms and corresponding diseases. The model is capable of predicting diseases based on input symptoms.</li>
-            <li><b><strong>Prediction:</strong></b> The app uses the model to predict the most likely disease, providing users with instant information about potential health concerns.</li>
-            <li><b><strong>Additional Information: </strong></b> To enhance user experience, the app also provides additional information about the predicted disease. This includes a description of the disease, recommended precautions, medications, dietary advice, and workout tips.</li>
+        .btn-primary {
+            background-color: #1d3557;
+            border: none;
+        }
 
-        </ol>
+        .btn-primary:hover {
+            background-color: #457b9d;
+        }
+    </style>
+</head>
 
-        <h3>Key Features</h3>
-        <ul type="circle">
-            <li><b><strong>User-Friendly Interface:</strong></b> The web app boasts an intuitive and easy-to-navigate interface, ensuring that users can input their symptoms without any hassle.</li>
-            <li><b><strong>Accurate Predictions:</strong></b> Leveraging machine learning, our model provides accurate disease predictions based on the symptoms provided by the user.</li>
-            <li><b><strong>Comprehensive Information: </strong></b>In addition to predictions, the app offers comprehensive information about the predicted disease, including descriptions, precautions, medications, diet recommendations, and workout tips.</li>
-            <li><b><strong>ducational Content:</strong></b> To empower users with knowledge, the app includes informative blog posts about various health topics.</li>
-        </ul>
+<body>
 
-        <br>
+    <div class="container">
+        <h1 class="text-center mb-4 fw-bold">How It Works</h1>
+        <p class="text-center mb-5">Discover how our Medicine Recommendation System predicts diseases and provides personalized medical advice based on your symptoms.</p>
 
-        <h3>Conclusion</h3>
-        <p>Our Symptom-Based Disease Diagnosis Web App brings the power of machine learning and healthcare information to the fingertips of users. It serves as a valuable resource for individuals looking to gain insights into their health conditions quickly and conveniently. By combining technology and healthcare, we aim to make healthcare more accessible and user-centric.
+        <!-- Step 1 -->
+        <div class="step-card">
+            <h3>Step 1: Symptom Input</h3>
+            <p>Users enter their symptoms into the web application using either text input or voice recognition. The system supports a wide range of symptoms to cover various diseases.</p>
+        </div>
 
-In an era where remote healthcare solutions are gaining prominence, this project represents a significant step forward in providing accessible and reliable healthcare information to the masses. We hope that this project will contribute to better health awareness and ultimately improve the well-being of individuals worldwide.</p>
+        <!-- Step 2 -->
+        <div class="step-card">
+            <h3>Step 2: Machine Learning Prediction</h3>
+            <p>Our system uses a pre-trained Support Vector Classifier (SVC) model that analyzes your symptoms and predicts the most likely disease in real-time.</p>
+        </div>
 
+        <!-- Step 3 -->
+        <div class="step-card">
+            <h3>Step 3: Disease Information</h3>
+            <p>The system provides detailed information about the predicted disease, including its description, symptoms, and severity.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+            <h3>Step 4: Personalized Recommendations</h3>
+            <p>Our platform offers tailored recommendations such as medications, precautions, diet plans, and workout tips specific to the predicted disease to guide users towards better health management.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-card">
+            <h3>Step 5: User-Friendly Experience</h3>
+            <p>Designed with an intuitive interface and voice input support, our system ensures a seamless experience for all users.</p>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Back to Home</a>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  </body>
+
+    <footer class="text-center mt-5 mb-3 text-muted">
+        <p>&copy; 2025 Medicine Recommendation System | Developed by Bajrang Kumar, Ahana Mandal & Sonu Kumar Ranjan</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
