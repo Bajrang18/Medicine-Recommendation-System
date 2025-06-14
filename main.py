@@ -3,13 +3,10 @@ import numpy as np
 import pandas as pd
 import pickle
 
-
 # flask app
 app = Flask(__name__)
 
-
-
-# load databasedataset===================================
+# load databasedataset
 sym_des = pd.read_csv("datasets/symtoms_df.csv")
 precautions = pd.read_csv("datasets/precautions_df.csv")
 workout = pd.read_csv("datasets/workout_df.csv")
@@ -18,12 +15,11 @@ medications = pd.read_csv('datasets/medications.csv')
 diets = pd.read_csv("datasets/diets.csv")
 
 
-# load model===========================================
+# load model
 svc = pickle.load(open('models/svc.pkl','rb'))              
 
-
-#============================================================
 # custome and helping functions
+
 #==========================helper funtions================
 def helper(dis):
     desc = description[description['Disease'] == dis]['Description']
@@ -49,50 +45,62 @@ diseases_list = {15: 'Fungal infection', 4: 'Allergy', 16: 'GERD', 9: 'Chronic c
 # Model Prediction function
 def get_predicted_value(patient_symptoms):
     input_vector = np.zeros(len(symptoms_dict))
+    invalid_symptoms = []
+
     for item in patient_symptoms:
-        input_vector[symptoms_dict[item]] = 1
-    return diseases_list[svc.predict([input_vector])[0]]
+        if item in symptoms_dict:
+            input_vector[symptoms_dict[item]] = 1
+        else:
+            invalid_symptoms.append(item)
 
+    if invalid_symptoms:
+        return None, invalid_symptoms
 
-
+    return diseases_list[svc.predict([input_vector])[0]], None
 
 # creating routes========================================
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    symptom_list = list(symptoms_dict.keys())
+    return render_template("index.html", symptoms=symptom_list)
 
 # Define a route for the home page
 @app.route('/predict', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         symptoms = request.form.get('symptoms')
-        # mysysms = request.form.get('mysysms')
-        # print(mysysms)
-        print(symptoms)
-        if symptoms =="Symptoms":
-            message = "Please either write symptoms or you have written misspelled symptoms"
-            return render_template('index.html', message=message)
-        else:
+        if symptoms == "Symptoms" or not symptoms.strip():
+            message = "Please enter valid symptoms."
+            symptom_list = list(symptoms_dict.keys())
+            return render_template('index.html', message=message, symptoms=symptom_list)
 
-            # Split the user's input into a list of symptoms (assuming they are comma-separated)
-            user_symptoms = [s.strip() for s in symptoms.split(',')]
-            # Remove any extra characters, if any
-            user_symptoms = [symptom.strip("[]' ") for symptom in user_symptoms]
-            predicted_disease = get_predicted_value(user_symptoms)
-            dis_des, precautions, medications, rec_diet, workout = helper(predicted_disease)
+        # Process user input
+        user_symptoms = [s.strip() for s in symptoms.split(',')]
+        user_symptoms = [symptom.strip("[]' ") for symptom in user_symptoms]
 
-            my_precautions = []
-            for i in precautions[0]:
-                my_precautions.append(i)
+        predicted_disease, invalid_symptoms = get_predicted_value(user_symptoms)
 
-            return render_template('index.html', predicted_disease=predicted_disease, dis_des=dis_des,
-                                   my_precautions=my_precautions, medications=medications, my_diet=rec_diet,
-                                   workout=workout)
+        if invalid_symptoms:
+            message = f"Invalid symptoms detected: {', '.join(invalid_symptoms)}. Please check your input."
+            symptom_list = list(symptoms_dict.keys())
+            return render_template('index.html', message=message, symptoms=symptom_list)
 
-    return render_template('index.html')
+        dis_des, precautions, medications, rec_diet, workout = helper(predicted_disease)
 
+        my_precautions = []
+        for i in precautions[0]:
+            my_precautions.append(i)
 
+        symptom_list = list(symptoms_dict.keys())
+        return render_template('index.html', predicted_disease=predicted_disease, dis_des=dis_des,
+                               my_precautions=my_precautions, medications=medications, my_diet=rec_diet,
+                               workout=workout, symptoms=symptom_list)
+
+    else:
+        # GET request: load symptom list for autocomplete
+        symptom_list = list(symptoms_dict.keys())
+        return render_template('index.html', symptoms=symptom_list)
 
 # about view funtion and path
 @app.route('/about')
@@ -113,7 +121,5 @@ def developer():
 def blog():
     return render_template("blog.html")
 
-
 if __name__ == '__main__':
-
     app.run(debug=True)
