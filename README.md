@@ -41,7 +41,7 @@ Medicine-Recommendation-System/
 │   └── developer.html
 │
 ├── static/
-│   └── (images, CSS, JS files if any)
+│   └── (images)
 │
 ├── datasets/
 │   ├── Training.csv
@@ -53,9 +53,9 @@ Medicine-Recommendation-System/
 │   └── workout_df.csv
 │
 ├── models/
-│   └── svc.pkl
+│   ├── svc.pkl
+│   ├── Medicine Recommendation System.ipynb
 │
 ├── main.py
 ├── requirements.txt
-├── Medicine Recommendation System.ipynb
 └── README.md

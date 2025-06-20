@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify  # Import jsonify
+from flask import Flask, request, render_template
 import numpy as np
 import pandas as pd
 import pickle
@@ -19,8 +19,7 @@ diets = pd.read_csv("datasets/diets.csv")
 svc = pickle.load(open('models/svc.pkl','rb'))              
 
 # custome and helping functions
-
-#==========================helper funtions================
+# helper funtions
 def helper(dis):
     desc = description[description['Disease'] == dis]['Description']
     desc = " ".join([w for w in desc])
